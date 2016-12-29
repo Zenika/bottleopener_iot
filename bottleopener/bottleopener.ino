@@ -3,6 +3,9 @@
 #include "thingspeakSender.h"
 ThingspeakSender thingspeakSender;
 
+#include "shiftrConnector.h"
+ShiftrConnector shiftrConnector;
+
 #define PIN_BUTTON    7
 #define PIN_LED_KO    12
 #define PIN_LED_OK    13
@@ -24,6 +27,7 @@ void setup() {
 
   //setup the IoT platforms
   thingspeakSender.init();
+  shiftrConnector.init("bottleopener1", "c91dc205301b5f93");
 
   //Everything seems to be ok, let's start !
   Serial.println("Bottle Opener Up !!!");
@@ -34,6 +38,9 @@ void setup() {
    Arduino loop...
 */
 void loop() {
+  shiftrConnector.loop();
+
+  
   boolean pressed = debounce();
   if (pressed == true) {
     counter++;
@@ -46,10 +53,22 @@ void loop() {
 }
 
 /**
+ * Only necessary for Shiftr.io API
+ */
+void messageReceived(String topic, String payload, char * bytes, unsigned int length) {
+  Serial.print("incoming: ");
+  Serial.print(topic);
+  Serial.print(" - ");
+  Serial.print(payload);
+  Serial.println();
+}
+
+/**
    Send the counter to the IoT platforms
 */
 void sendCounter() {
   thingspeakSender.sendCounter(counter);
+  shiftrConnector.sendCounter(counter);
 }
 
 /**
