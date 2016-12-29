@@ -7,18 +7,12 @@ ThingspeakSender thingspeakSender;
 ShiftrConnector shiftrConnector;
 
 #define PIN_BUTTON    7
-#define PIN_LED_KO    12
-#define PIN_LED_OK    13
 
 //Global counter for this bottle opener
 int counter = 0;
 
 void setup() {
-  pinMode(PIN_LED_KO, OUTPUT);
-  pinMode(PIN_LED_OK, OUTPUT);
   pinMode(PIN_BUTTON, INPUT);
-
-  _setKO();
 
   //setup the bridge and serial
   Bridge.begin(); //Yun Bridge
@@ -31,7 +25,6 @@ void setup() {
 
   //Everything seems to be ok, let's start !
   Serial.println("Bottle Opener Up !!!");
-  _setOK();
 }
 
 /**
@@ -103,20 +96,4 @@ boolean debounce() {
   }
   lastButtonState = reading;
   return retVal;
-}
-
-/**
-   Lightup the blue led
-*/
-void _setOK() {
-  digitalWrite(PIN_LED_KO, LOW);
-  digitalWrite(PIN_LED_OK, HIGH);
-}
-
-/**
-   Light up the red led
-*/
-void _setKO() {
-  digitalWrite(PIN_LED_OK, LOW);
-  digitalWrite(PIN_LED_KO, HIGH);
 }
