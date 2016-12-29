@@ -22,7 +22,7 @@ void ShiftrConnector::connect() {
     delay(500);
   }
 
-  Serial.println("\nconnected to Shiftr!");
+  Serial.println("\nBottle-Opener is now connected to Shiftr!");
 }
 
 void ShiftrConnector::loop()
