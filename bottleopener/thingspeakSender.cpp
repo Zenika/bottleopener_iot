@@ -10,7 +10,7 @@ void ThingspeakSender::init()
 {
   ThingSpeak.begin(client);
 
-  Serial.println("\nconnected to ThingSpeak!");
+  Serial.println("\nBottle-Opener is now connected to ThingSpeak!");
 }
 
 void ThingspeakSender::sendCounter(int counter)
