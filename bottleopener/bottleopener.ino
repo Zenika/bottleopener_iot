@@ -38,29 +38,16 @@ void setup() {
    Arduino loop...
 */
 void loop() {
+  //need to refresh shiftr API in order to send and receive new messages
   shiftrConnector.loop();
 
-  
   boolean pressed = debounce();
   if (pressed == true) {
     counter++;
-    Serial.print("Button pressed ");
-    Serial.print(counter);
-    Serial.println(" times");
     sendCounter();
+    logCounter();
   }
 
-}
-
-/**
- * Only necessary for Shiftr.io API
- */
-void messageReceived(String topic, String payload, char * bytes, unsigned int length) {
-  Serial.print("incoming: ");
-  Serial.print(topic);
-  Serial.print(" - ");
-  Serial.print(payload);
-  Serial.println();
 }
 
 /**
@@ -70,6 +57,27 @@ void sendCounter() {
   thingspeakSender.sendCounter(counter);
   shiftrConnector.sendCounter(counter);
 }
+
+/**
+   Logs counter information on Serial Console
+*/
+void logCounter() {
+  Serial.print("Button pressed ");
+  Serial.print(counter);
+  Serial.println(" times");
+}
+
+/**
+   Only necessary for Shiftr.io API
+*/
+void messageReceived(String topic, String payload, char * bytes, unsigned int length) {
+  Serial.print("incoming: ");
+  Serial.print(topic);
+  Serial.print(" - ");
+  Serial.print(payload);
+  Serial.println();
+}
+
 
 /**
    check if the button was pressed.
