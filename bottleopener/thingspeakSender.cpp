@@ -9,6 +9,8 @@ BridgeClient client;
 void ThingspeakSender::init()
 {
   ThingSpeak.begin(client);
+
+  Serial.println("\nconnected to ThingSpeak!");
 }
 
 void ThingspeakSender::sendCounter(int counter)
