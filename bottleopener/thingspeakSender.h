@@ -3,16 +3,17 @@
 
 class ThingspeakSender {
 
-  public :
+  private :
     unsigned long channelNumber = 204611;
     const char * writeAPIKey = "YOUR_API_KEY";
-
+    
+  public :
     void sendCounter(int counter);
 
     void init();
 
     //default constructor
-    ThingspeakSender(){};
+    ThingspeakSender() {};
 };
 
 #endif
