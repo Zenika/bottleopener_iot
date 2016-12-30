@@ -2,8 +2,16 @@
 
 #include "logger.h"
 
+/////////////////////////////////////////////
+// Include of Iot Platform's connectors
 #include "thingspeakReceiver.h"
 ThingspeakReceiver thingspeakReceiver;
+int thingsSpeakCounter = 0;
+
+#include "shiftrConnector.h"
+ShiftrConnector shiftrConnector;
+int shiftrCounter = 0;
+/////////////////////////////////////////////
 
 #include <Adafruit_LEDBackpack.h>
 #include <Adafruit_GFX.h>
@@ -28,6 +36,7 @@ void setup() {
   //setup the IoT platforms
   logger->log("Start setup connection with IoT platforms...\n");
   thingspeakReceiver.init();
+  shiftrConnector.init();
 
   //Everything seems to be ok, let's start !
   logger->log("\nBottle Opener up, Let's start to play :) !!!\n");
@@ -40,11 +49,16 @@ void setup() {
    Arduino Loop
 */
 void loop() {
-  int counter = thingspeakReceiver.receiveCounter();
+  //need to refresh shiftr API in order to send and receive new messages
+  shiftrConnector.loop();
 
-  displayCounter(counter);
+  thingsSpeakCounter = thingspeakReceiver.receiveCounter();
+  shiftrCounter = shiftrConnector.receiveMessage();
 
-  delay(500);
+  //display whatever counter, they should be the same, independently of the platform
+  displayCounter(shiftrCounter);
+
+  delay(10);
 }
 
 /**
