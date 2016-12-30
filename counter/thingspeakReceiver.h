@@ -1,9 +1,11 @@
 #pragma once
 
+#include "message.h"
+
 class ThingspeakReceiver {
 
   public :
-    int receiveCounter();
+    Message receiveMessage();
 
     void init();
 
