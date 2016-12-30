@@ -2,11 +2,14 @@
 
 #include "logger.h"
 
+/////////////////////////////////////////////
+// Include of Iot Platform's connectors
 #include "thingspeakSender.h"
 ThingspeakSender thingspeakSender;
 
 #include "shiftrConnector.h"
 ShiftrConnector shiftrConnector;
+/////////////////////////////////////////////
 
 #define PIN_BUTTON    7
 #define PIN_LED      13
@@ -65,17 +68,6 @@ void logCounter() {
   logger->log("Button pressed ");
   logger->log((String) counter);
   logger->log("times \n");
-}
-
-/**
-   Only necessary for Shiftr.io API
-*/
-void messageReceived(String topic, String payload, char * bytes, unsigned int length) {
-  logger->log("incoming: ");
-  logger->log(topic);
-  logger->log(" : ");
-  logger->log(payload);
-  logger->log("\n");
 }
 
 
