@@ -3,6 +3,13 @@
 #include "logger.h"
 #include "secretKeys.h"
 
+/**
+   Only necessary for Shiftr.io API
+*/
+void messageReceived(String topic, String payload, char * bytes, unsigned int length) {
+  logger->log("Receiving from Shiftr.io...\n");
+}
+
 void ShiftrConnector::init()
 {
   client.begin("broker.shiftr.io");
