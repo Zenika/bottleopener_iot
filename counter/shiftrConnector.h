@@ -3,11 +3,13 @@
 //https://github.com/256dpi/arduino-mqtt
 #include <YunMQTTClient.h>
 
+#include "message.h"
+
 class ShiftrConnector {
   public :
-    static int message;
+    static Message message;
 
-    int receiveMessage();
+    Message receiveMessage();
 
     void init();
     void loop();

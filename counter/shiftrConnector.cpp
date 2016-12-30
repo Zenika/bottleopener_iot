@@ -1,6 +1,5 @@
 #include "shiftrConnector.h"
 
-#include "message.h"
 #include "logger.h"
 #include "secretKeys.h"
 
@@ -8,7 +7,7 @@
    Only necessary for Shiftr.io API
 */
 
-int ShiftrConnector::message = 0;
+Message ShiftrConnector::message;
 void messageReceived(String topic, String payload, char * bytes, unsigned int length) {
   logger->log("Receiving from Shiftr.io ...\n");
 
@@ -18,7 +17,7 @@ void messageReceived(String topic, String payload, char * bytes, unsigned int le
   payload.toCharArray(buf, 128);
   Message::deserialize(msg, buf);
 
-  ShiftrConnector::message = msg.quantity;
+  ShiftrConnector::message = msg;
 }
 
 void ShiftrConnector::init()
@@ -52,7 +51,7 @@ void ShiftrConnector::loop()
   }
 }
 
-int ShiftrConnector::receiveMessage()
+Message ShiftrConnector::receiveMessage()
 {
   return ShiftrConnector::message;
 }
