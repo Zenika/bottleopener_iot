@@ -25,7 +25,7 @@ void setup() {
   //setup the IoT platforms
   logger->log("Start setup connection with IoT platforms...\n");
   thingspeakSender.init();
-  shiftrConnector.init("bottleopener1", "c91dc205301b5f93");
+  shiftrConnector.init();
 
   //Everything seems to be ok, let's start !
   logger->log("\nBottle Opener up, Let's start to play :) !!!\n");

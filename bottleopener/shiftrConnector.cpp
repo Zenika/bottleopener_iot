@@ -1,25 +1,23 @@
 #include "shiftrConnector.h"
 
 #include "logger.h"
+#include "secretKeys.h"
 
-void ShiftrConnector::init(const char* deviceLogin, const char* pwd)
+void ShiftrConnector::init()
 {
   client.begin("broker.shiftr.io");
 
-  this->deviceLogin = deviceLogin;
-  this->pwd = pwd;
-
   this->connect();
 
-  client.subscribe("/bottle-openner");
-  // client.unsubscribe("/bottle-openner");
+  client.subscribe(SHIFTR_NAMESPACE);
+  // client.unsubscribe(SHIFTR_NAMESPACE);
 
 }
 
 void ShiftrConnector::connect() {
   logger->log("\nTry to connect to Shiftr ...");
 
-  while (!client.connect("arduino", this->deviceLogin, this->pwd)) {
+  while (!client.connect("arduino", SHIFTR_DEVICE_LOGIN, SHIFTR_DEVICE_PWD)) {
     logger->log(".");
     delay(50);
   }
@@ -43,5 +41,5 @@ void ShiftrConnector::sendCounter(int counter)
   char buf[5];
   itoa(counter, buf, 10);
   
-  client.publish("/bottle-openner", buf);
+  client.publish(SHIFTR_NAMESPACE, buf);
 }

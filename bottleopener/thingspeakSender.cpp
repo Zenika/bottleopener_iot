@@ -6,6 +6,7 @@
 BridgeClient client;
 
 #include "logger.h"
+#include "secretKeys.h"
 
 void ThingspeakSender::init()
 {
@@ -21,5 +22,5 @@ void ThingspeakSender::sendCounter(int counter)
   logger->log("Sending to ThingSpeak...\n");
   
   //send '1' to the IoT server on the channel
-  ThingSpeak.writeField(channelNumber, 1, counter, writeAPIKey);
+  ThingSpeak.writeField(THINGSPEAK_CHANNEL_NUMBER, 1, counter, THINGSPEAK_WRITE_API_KEY);
 }

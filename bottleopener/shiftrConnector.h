@@ -7,7 +7,7 @@ class ShiftrConnector {
   public :
     void sendCounter(int counter);
 
-    void init(const char* deviceLogin, const char* pwd);
+    void init();
 
     void loop();
 
@@ -16,8 +16,6 @@ class ShiftrConnector {
 
   private :
     YunMQTTClient client;
-    const char* deviceLogin;
-    const char* pwd;
 
     void connect();
 };
