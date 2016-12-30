@@ -1,5 +1,7 @@
 #include <Bridge.h>
 
+#include "logger.h"
+
 #include "thingspeakSender.h"
 ThingspeakSender thingspeakSender;
 
@@ -14,17 +16,17 @@ int counter = 0;
 void setup() {
   pinMode(PIN_BUTTON, INPUT);
 
-  //setup the bridge and serial
-  Bridge.begin(); //Yun Bridge
-  Serial.begin(9600);
-  while (!Serial);
+  Bridge.begin(); // Yun bridge
+  logger->init();
+
 
   //setup the IoT platforms
+  logger->log("Start setup connection with IoT platforms...\n");
   thingspeakSender.init();
   shiftrConnector.init("bottleopener1", "c91dc205301b5f93");
 
   //Everything seems to be ok, let's start !
-  Serial.println("Bottle Opener Up !!!");
+  logger->log("\nBottle Opener up, Let's start to play :) !!!\n");
 }
 
 /**
@@ -55,20 +57,20 @@ void sendCounter() {
    Logs counter information on Serial Console
 */
 void logCounter() {
-  Serial.print("Button pressed ");
-  Serial.print(counter);
-  Serial.println(" times");
+  logger->log("Button pressed ");
+  logger->log((String) counter);
+  logger->log("times \n");
 }
 
 /**
    Only necessary for Shiftr.io API
 */
 void messageReceived(String topic, String payload, char * bytes, unsigned int length) {
-  Serial.print("incoming: ");
-  Serial.print(topic);
-  Serial.print(" - ");
-  Serial.print(payload);
-  Serial.println();
+  logger->log("incoming: ");
+  logger->log(topic);
+  logger->log(" - ");
+  logger->log(payload);
+  logger->log("\n");
 }
 
 
@@ -97,3 +99,4 @@ boolean debounce() {
   lastButtonState = reading;
   return retVal;
 }
+

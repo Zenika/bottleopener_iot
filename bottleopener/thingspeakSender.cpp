@@ -5,12 +5,13 @@
 #include "BridgeClient.h"
 BridgeClient client;
 
+#include "logger.h"
 
 void ThingspeakSender::init()
 {
   ThingSpeak.begin(client);
 
-  Serial.println("\nBottle-Opener is now connected to ThingSpeak!");
+  logger->log("\nBottle-Opener is now connected to ThingSpeak!");
 }
 
 void ThingspeakSender::sendCounter(int counter)

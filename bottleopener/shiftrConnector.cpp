@@ -1,6 +1,6 @@
 #include "shiftrConnector.h"
 
-#include <Bridge.h>
+#include "logger.h"
 
 void ShiftrConnector::init(const char* deviceLogin, const char* pwd)
 {
@@ -18,11 +18,11 @@ void ShiftrConnector::init(const char* deviceLogin, const char* pwd)
 
 void ShiftrConnector::connect() {
   while (!client.connect("arduino", this->deviceLogin, this->pwd)) {
-    Serial.print(".");
+    logger->log(".");
     delay(500);
   }
 
-  Serial.println("\nBottle-Opener is now connected to Shiftr!");
+  logger->log("\nBottle-Opener is now connected to Shiftr!");
 }
 
 void ShiftrConnector::loop()
