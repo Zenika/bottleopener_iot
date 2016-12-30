@@ -57,8 +57,8 @@ void loop() {
    Send the counter to the IoT platforms
 */
 void sendCounter() {
-  thingspeakSender.sendCounter(counter);
-  shiftrConnector.sendCounter(counter);
+  thingspeakSender.sendMessage("Gwen", counter);
+  shiftrConnector.sendMessage("Gwen", counter);
 }
 
 /**
