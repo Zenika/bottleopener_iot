@@ -9,12 +9,14 @@ ThingspeakSender thingspeakSender;
 ShiftrConnector shiftrConnector;
 
 #define PIN_BUTTON    7
+#define PIN_LED      13
 
 //Global counter for this bottle opener
 int counter = 0;
 
 void setup() {
   pinMode(PIN_BUTTON, INPUT);
+  pinMode(PIN_LED, OUTPUT);
 
   Bridge.begin(); // Yun bridge
   logger->init();
@@ -27,6 +29,9 @@ void setup() {
 
   //Everything seems to be ok, let's start !
   logger->log("\nBottle Opener up, Let's start to play :) !!!\n");
+
+  //highlight blue led just to prevent everything is OK. Useful when logs are disabled
+  digitalWrite(PIN_LED, HIGH);
 }
 
 /**
@@ -68,7 +73,7 @@ void logCounter() {
 void messageReceived(String topic, String payload, char * bytes, unsigned int length) {
   logger->log("incoming: ");
   logger->log(topic);
-  logger->log(" - ");
+  logger->log(" : ");
   logger->log(payload);
   logger->log("\n");
 }
