@@ -1,4 +1,4 @@
 .idea/
 
-#API keys file
-/bottleopener/secretKeys.h
+#API keys files
+secretKeys.h
