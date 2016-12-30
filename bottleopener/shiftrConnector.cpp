@@ -9,7 +9,7 @@ void ShiftrConnector::init(const char* deviceLogin, const char* pwd)
   this->deviceLogin = deviceLogin;
   this->pwd = pwd;
 
-  connect();
+  this->connect();
 
   client.subscribe("/bottle-openner");
   // client.unsubscribe("/bottle-openner");
@@ -17,12 +17,14 @@ void ShiftrConnector::init(const char* deviceLogin, const char* pwd)
 }
 
 void ShiftrConnector::connect() {
+  logger->log("\nTry to connect to Shiftr ...");
+
   while (!client.connect("arduino", this->deviceLogin, this->pwd)) {
     logger->log(".");
-    delay(500);
+    delay(50);
   }
 
-  logger->log("\nBottle-Opener is now connected to Shiftr!");
+  logger->log(" Done ! \n");
 }
 
 void ShiftrConnector::loop()
@@ -36,6 +38,8 @@ void ShiftrConnector::loop()
 
 void ShiftrConnector::sendCounter(int counter)
 {
+  logger->log("Sending to Shiftr...\n");
+  
   char buf[5];
   itoa(counter, buf, 10);
   
