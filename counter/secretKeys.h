@@ -1,4 +1,4 @@
-#pragma
+#pragma once
 
 //ThingSpeak API keys
 #define THINGSPEAK_CHANNEL_NUMBER   204611
