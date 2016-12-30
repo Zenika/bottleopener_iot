@@ -1,5 +1,4 @@
-#ifndef __SHIFTR_CONNECTOR_H__
-#define __SHIFTR_CONNECTOR_H__
+#pragma once
 
 #include <YunMQTTClient.h>
 
@@ -22,6 +21,4 @@ class ShiftrConnector {
 
     void connect();
 };
-
-#endif
 
