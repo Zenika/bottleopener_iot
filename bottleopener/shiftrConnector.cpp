@@ -1,5 +1,7 @@
 #include "shiftrConnector.h"
 
+#include "message.h"
+
 #include "logger.h"
 #include "secretKeys.h"
 
@@ -41,12 +43,14 @@ void ShiftrConnector::loop()
   }
 }
 
-void ShiftrConnector::sendCounter(int counter)
+void ShiftrConnector::sendMessage(const char* sender, int counter)
 {
   logger->log("Sending to Shiftr...\n");
   
-  char buf[5];
-  itoa(counter, buf, 10);
+  char buf[128];
+  
+  Message msg(sender, "Shiftr", counter);
+  Message::serialize(msg, buf, 128);
   
   client.publish(SHIFTR_NAMESPACE, buf);
 }

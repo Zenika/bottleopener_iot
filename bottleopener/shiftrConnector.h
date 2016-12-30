@@ -6,7 +6,7 @@
 class ShiftrConnector {
 
   public :
-    void sendCounter(int counter);
+    void sendMessage(const char* sender, int counter);
 
     void init();
 
