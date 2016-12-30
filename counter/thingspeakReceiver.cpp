@@ -5,6 +5,8 @@
 #include "BridgeClient.h"
 BridgeClient client;
 
+#include "message.h"
+
 #include "logger.h"
 #include "secretKeys.h"
 
@@ -17,9 +19,15 @@ void ThingspeakReceiver::init()
   logger->log(" Done ! \n");
 }
 
-int ThingspeakReceiver::receiveCounter()
+Message ThingspeakReceiver::receiveCounter()
 {
-  logger->log("Receiving from ThingSpeak...\n");
+  //logger->log("Receiving from ThingSpeak...\n");
   
-  return ThingSpeak.readIntField(THINGSPEAK_CHANNEL_NUMBER, 1, THINGSPEAK_READ_API_KEY);
+  Message msg;
+  
+  msg.sender = ThingSpeak.readStringField(THINGSPEAK_CHANNEL_NUMBER, 1, THINGSPEAK_READ_API_KEY);
+  msg.platform = ThingSpeak.readStringField(THINGSPEAK_CHANNEL_NUMBER, 2, THINGSPEAK_READ_API_KEY);
+  msg.quantity = ThingSpeak.readStringField(THINGSPEAK_CHANNEL_NUMBER, 3, THINGSPEAK_READ_API_KEY);
+
+  return msg;
 }

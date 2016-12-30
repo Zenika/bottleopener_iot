@@ -49,10 +49,10 @@ void setup() {
    Arduino Loop
 */
 void loop() {
+  thingsSpeakCounter = thingspeakReceiver.receiveCounter().quantity;
+
   //need to refresh shiftr API in order to send and receive new messages
   shiftrConnector.loop();
-
-  thingsSpeakCounter = thingspeakReceiver.receiveCounter();
   shiftrCounter = shiftrConnector.receiveMessage();
 
   //display whatever counter, they should be the same, independently of the platform

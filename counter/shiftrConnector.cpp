@@ -1,5 +1,6 @@
 #include "shiftrConnector.h"
 
+#include "message.h"
 #include "logger.h"
 #include "secretKeys.h"
 
@@ -11,9 +12,13 @@ int ShiftrConnector::message = 0;
 void messageReceived(String topic, String payload, char * bytes, unsigned int length) {
   logger->log("Receiving from Shiftr.io ...\n");
 
-  int v = payload.toInt();
+  Message msg;
+  
+  char buf[sizeof(payload)];
+  payload.toCharArray(buf, 128);
+  Message::deserialize(msg, buf);
 
-  ShiftrConnector::message = v;
+  ShiftrConnector::message = msg.quantity;
 }
 
 void ShiftrConnector::init()
