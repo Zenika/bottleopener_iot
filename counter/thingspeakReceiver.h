@@ -1,5 +1,4 @@
-#ifndef __THINSPEAK_RECEIVER_H__
-#define __THINSPEAK_RECEIVER_H__
+#pragma
 
 class ThingspeakReceiver {
 
@@ -11,6 +10,4 @@ class ThingspeakReceiver {
     //default constructor
     ThingspeakReceiver() {};
 };
-
-#endif
 
