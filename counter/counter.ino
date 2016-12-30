@@ -1,5 +1,7 @@
 #include <Bridge.h>
 
+#include "logger.h"
+
 #include "thingspeakReceiver.h"
 ThingspeakReceiver thingspeakReceiver;
 
@@ -7,55 +9,49 @@ ThingspeakReceiver thingspeakReceiver;
 #include <Adafruit_GFX.h>
 #include <Wire.h>
 
-#define PIN_LED_KO    12
-#define PIN_LED_OK    13
+#define PIN_LED    13
 
 Adafruit_7segment matrix = Adafruit_7segment();
 
 void setup() {
-  pinMode(PIN_LED_KO, OUTPUT);
-  pinMode(PIN_LED_OK, OUTPUT);
-
-  _setKO();
+  pinMode(PIN_LED, OUTPUT);
 
   Bridge.begin(); //Yun Bridge
-  Serial.begin(9600);
-  while (!Serial);
+  logger->init();
 
+  // init 7-segments matrix
   matrix.begin(0x70);
   matrix.setBrightness(2);
   displayCounter(0);
 
+
+  //setup the IoT platforms
+  logger->log("Start setup connection with IoT platforms...\n");
   thingspeakReceiver.init();
 
-  Serial.println("Counter Up !!!");
+  //Everything seems to be ok, let's start !
+  logger->log("\nBottle Opener up, Let's start to play :) !!!\n");
 
-  _setOK();
-
+  //highlight blue led just to prevent everything is OK. Useful when logs are disabled
+  digitalWrite(PIN_LED, HIGH);
 }
 
+/**
+   Arduino Loop
+*/
 void loop() {
   int counter = thingspeakReceiver.receiveCounter();
 
   displayCounter(counter);
 
-  delay(100);
+  delay(500);
 }
 
+/**
+   Display Counter on è
+*/
 void displayCounter(int counter) {
   matrix.print(counter);
   matrix.writeDisplay();
-
-  Serial.println(counter);
 }
 
-
-void _setOK() {
-  digitalWrite(PIN_LED_KO, LOW);
-  digitalWrite(PIN_LED_OK, HIGH);
-}
-
-void _setKO() {
-  digitalWrite(PIN_LED_OK, LOW);
-  digitalWrite(PIN_LED_KO, HIGH);
-}
