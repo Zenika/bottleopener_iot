@@ -1,6 +1,7 @@
 /**
  * Created by gwennael.buchet on 01/01/17.
  */
+"use strict";
 
 /**
  * HOW-TO :
