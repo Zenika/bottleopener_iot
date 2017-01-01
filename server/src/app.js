@@ -1,12 +1,14 @@
 "use strict";
 
-var express = require('express');
-var app = express();
-var http = require('http').Server(app);
-var ws = require("nodejs-websocket");
+let express = require('express');
+let app = express();
+let http = require('http').Server(app);
+let ws = require("nodejs-websocket");
+
+let shiftrClient = require("./connectors/shiftr.module");
 
 
-var bodyParser = require('body-parser');
+let bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies
 
@@ -20,16 +22,17 @@ app.get('/', function(req, res) {
  * Server itself
  * @type {http.Server}
  */
-var server = app.listen(8090, function () {
+let server = app.listen(8090, function () {
     //print few information about the server
-    var host = server.address().address;
-    var port = server.address().port;
+    let host = server.address().address;
+    let port = server.address().port;
     console.log("Server running and listening @ " + host + ":" + port);
 
-    //nothing more to do here
+    //now init connectors
+	shiftrClient.init();
 });
 
-var serverws = ws.createServer(function (conn) {
+let serverws = ws.createServer(function (conn) {
     console.log("New connection");
 
     conn.on("text", function (str) {
@@ -42,7 +45,7 @@ var serverws = ws.createServer(function (conn) {
 }).listen(8081);
 
 /** list of current connected drinkers */
-var drinkers = [
+let drinkers = [
     {
         "name": "Gwen",
         "quantity": 0
@@ -54,14 +57,14 @@ var drinkers = [
 ];
 
 function _getDrinkerByName(name) {
-    var drinker = null;
+    let drinker = null;
     for (drinker of drinkers) {
         if (name === drinker.name)
             return drinker;
     }
 
     //no drinker ? create a new one
-    var newDrinker = {"name": name, "quantity": 0};
+    let newDrinker = {"name": name, "quantity": 0};
     drinkers.push(newDrinker);
 
     return newDrinker;
@@ -71,11 +74,11 @@ function _getDrinkerByName(name) {
  * GET instead of POST because it'll be called by Arduino YUN HttpClient that does only accept GET :(
  */
 app.get("/drink", function (req, res) {
-    var name = req.query.name;
-    var qty = req.query.quantity;
+    let name = req.query.name;
+    let qty = req.query.quantity;
 
-    var drinker = _getDrinkerByName(name);
-    var oldQty = parseFloat(drinker.quantity);
+    let drinker = _getDrinkerByName(name);
+    let oldQty = parseFloat(drinker.quantity);
     drinker.quantity = oldQty + (parseFloat(qty) / 1000);
 
 
