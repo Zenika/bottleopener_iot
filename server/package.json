@@ -1,0 +1,25 @@
+{
+  "name": "BottleOpener_backoffice",
+  "version": "0.0.1",
+  "private": true,
+  "contributors": [
+    {
+      "name": "Gwennaël Buchet",
+      "email": "gwennael.buchet@gmail.com"
+    }
+  ],
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "mocha -w"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "bootstrap": "^3.3.5",
+    "cors": "^2.7.1",
+    "eslint": "~0.24.1",
+    "express": "~4.13.1",
+    "mocha": "~2.2.5",
+    "nodejs-websocket": "^1.4.0"
+  },
+  "license": "MIT"
+}
