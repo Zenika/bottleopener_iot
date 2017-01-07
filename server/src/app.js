@@ -5,9 +5,15 @@ let app = express();
 let http = require('http').Server(app);
 let ws = require("nodejs-websocket");
 
+// START : INIT CONNCETORS //////////////////////////////
+//init connectors
 let shiftr = require("./connectors/shiftr.module");
-//now init connectors
 shiftr.init();
+
+let thingspeak = require("./connectors/thingspeak.module");
+thingspeak.init();
+
+// END : INIT CONNCETORS //////////////////////////////
 
 let bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
