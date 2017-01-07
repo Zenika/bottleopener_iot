@@ -5,8 +5,9 @@ let app = express();
 let http = require('http').Server(app);
 let ws = require("nodejs-websocket");
 
-let shiftrClient = require("./connectors/shiftr.module");
-
+let shiftr = require("./connectors/shiftr.module");
+//now init connectors
+shiftr.init();
 
 let bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
@@ -27,9 +28,6 @@ let server = app.listen(8090, function () {
     let host = server.address().address;
     let port = server.address().port;
     console.log("Server running and listening @ " + host + ":" + port);
-
-    //now init connectors
-	shiftrClient.init();
 });
 
 let serverws = ws.createServer(function (conn) {
