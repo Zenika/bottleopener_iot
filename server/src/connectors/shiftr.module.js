@@ -3,24 +3,29 @@
  */
 "use strict";
 
-require("./secretKeys.js");
+let keys = require("./secretKeys.js");
 let mqtt = require('mqtt');
 
 let shiftrClient;
 
-shiftrClient.on('connect', function () {
-	console.log('Shiftr.io client has connected!');
-
-	shiftrClient.subscribe(SHIFTR_NAMESPACE);
-});
-
-shiftrClient.on('message', function (topic, message) {
-	console.log('  * New message from Shiftr.io :', topic, message.toString());
-});
-
-
 exports.init = function () {
-	shiftrClient = mqtt.connect('mqtt://' + SHIFTR_DEVICE_LOGIN + ':' + SHIFTR_DEVICE_PWD + '@broker.shiftr.io', {
-		clientId: 'WebServer' //javascript
+	shiftrClient = mqtt.connect(
+		'mqtt://' + keys.SHIFTR_DEVICE_LOGIN + ':' + keys.SHIFTR_DEVICE_PWD + '@broker.shiftr.io', {
+			clientId: 'Web Server'
+		}
+	);
+
+	shiftrClient.on('connect', function () {
+		console.log('shiftrClient has connected!');
+
+		shiftrClient.subscribe(keys.SHIFTR_NAMESPACE);
+
+		/*setInterval(function () {
+			shiftrClient.publish(keys.SHIFTR_NAMESPACE, 'world');
+		}, 1000);*/
+	});
+
+	shiftrClient.on('message', function (topic, message) {
+		console.log('new message:', topic, message.toString());
 	});
 };
