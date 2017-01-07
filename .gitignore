@@ -3,4 +3,4 @@ server/node_modules/
 
 #API keys files
 secretKeys.h
-server/src/connectors/secretKeys.js
+/server/src/connectors/secretKeys.js
