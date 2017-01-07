@@ -11,6 +11,7 @@ let ThingSpeakClient = require('thingspeakclient');
 
 exports.init = function () {
 	let tsClient = new ThingSpeakClient();
+	let _last_entryID = -1;
 
 	tsClient.attachChannel(keys.THINGSPEAK_CHANNEL_NUMBER,
 	                       {
@@ -18,7 +19,7 @@ exports.init = function () {
 	                       },
 	                       function (err, resp) {
 		                       if (!err) {
-			                       console.log('Connected to Thingspeak. response was: ' + resp);
+			                       console.log('Connected to Thingspeak.');
 		                       }
 		                       else {
 			                       console.log('Thingspeak connection error. response was: ' + err);
@@ -29,7 +30,10 @@ exports.init = function () {
 	setInterval(function () {
 		tsClient.getLastEntryInChannelFeed(keys.THINGSPEAK_CHANNEL_NUMBER, function (err, resp) {
 			if (!err) {
-				console.log(resp);
+				if (resp.entry_id != _last_entryID) {
+					_last_entryID = resp.entry_id;
+					console.log(resp);
+				}
 			}
 			else {
 				console.log('Thingspeak reception error. response was: ' + err);
