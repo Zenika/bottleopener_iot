@@ -6,10 +6,8 @@
 let keys = require("./secretKeys.js");
 let mqtt = require('mqtt');
 
-let shiftrClient;
-
 exports.init = function () {
-	shiftrClient = mqtt.connect(
+	let shiftrClient = mqtt.connect(
 		'mqtt://' + keys.SHIFTR_DEVICE_LOGIN + ':' + keys.SHIFTR_DEVICE_PWD + '@broker.shiftr.io', {
 			clientId: 'Web Server'
 		}
