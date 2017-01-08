@@ -11,7 +11,7 @@ let shiftr = require("./connectors/shiftr.module");
 shiftr.init(openBottle);
 
 let thingspeak = require("./connectors/thingspeak.module");
-thingspeak.init();
+thingspeak.init(openBottle);
 
 // END : INIT CONNCETORS //////////////////////////////
 

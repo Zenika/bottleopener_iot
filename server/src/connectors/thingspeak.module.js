@@ -9,7 +9,7 @@
 let keys = require("./secretKeys.js");
 let ThingSpeakClient = require('thingspeakclient');
 
-exports.init = function () {
+exports.init = function (mainCallback) {
 	let tsClient = new ThingSpeakClient();
 	let _last_entryID = -1;
 
@@ -35,6 +35,8 @@ exports.init = function () {
 				if (resp.entry_id != _last_entryID) {
 					_last_entryID = resp.entry_id;
 					console.log(resp);
+
+					mainCallback(resp.field1, resp.field2, "ThingSpeak");
 				}
 			}
 			else {
