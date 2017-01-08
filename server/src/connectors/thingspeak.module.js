@@ -26,7 +26,9 @@ exports.init = function () {
 		                       }
 	                       });
 
-
+	/**
+	 * Because Thingspeak uses HTTP (not Websocket, neither MQTT) we have to manually refresh the data
+	 */
 	setInterval(function () {
 		tsClient.getLastEntryInChannelFeed(keys.THINGSPEAK_CHANNEL_NUMBER, function (err, resp) {
 			if (!err) {
