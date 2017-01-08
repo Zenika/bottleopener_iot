@@ -1,6 +1,8 @@
 .idea/
 server/node_modules/
 
+yarn.lock
+
 #API keys files
 secretKeys.h
 /server/src/connectors/secretKeys.js
