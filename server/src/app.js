@@ -111,7 +111,7 @@ function _setPlatformQuantityByDrinkerAndName(drinker, platformName, quantity) {
 
 	return newPlatform;
 }
-s
+
 /**
  * Send new values to the front end.
  * Called by each connector when they received a message from their platform.
