@@ -16,7 +16,7 @@
     -webkit-transition:  all .3s ease;
 }
 .pricing-table:hover>.panel>.panel-body-landing {
-    background: #5CB85C;
+    background: #364e65;
     -webkit-transition:  all .3s ease;
 }
 .pricing-table:hover>.panel>.panel-heading-landing-box {
@@ -25,13 +25,13 @@
     -webkit-transition:  all .3s ease;
 }
 .pricing-table:hover>.panel>.controle-header {
-    background: #5CB85C !important;
-    /*    border: solid 2px #5CB85C !important;*/
+    background: #364e65 !important;
+    /*    border: solid 2px #364e65 !important;*/
     -webkit-transition:  all .3s ease;
 }
 .pricing-table:hover>.panel>.panel-footer {
-    background: #5CB85C !important;
-    /*    border: solid 2px #5CB85C !important;*/
+    background: #364e65 !important;
+    /*    border: solid 2px #364e65 !important;*/
     -webkit-transition:  all .3s ease;
 }
 .pricing-table:hover>.panel>.panel-footer>.btn {
@@ -40,7 +40,7 @@
 }
 .btn-price:hover {
     background: #fff !important;
-    color: #5CB85C !important;
+    color: #364e65 !important;
     -webkit-transition:  all .3s ease;
 }
 .pricing-table:hover>.panel>.controle-header>.panel-title-landing {
@@ -57,15 +57,15 @@
     padding: 20px !important;
     border-top-left-radius: 10px !important;
     border-top-right-radius: 10px !important;
-    border: solid 2px #5CB85C !important;
+    border: solid 2px #364e65 !important;
     border-bottom: none !important;
 }
 .panel-heading-landing-box {
-    background: #5CB85C !important;
+    background: #364e65 !important;
     color: #fff !important;
     font-size: 16px !important;
     padding: 3px !important;
-    border: solid 2px #5CB85C !important;
+    border: solid 2px #364e65 !important;
     border-top: none !important;
     text-align: center;
     font-weight: bolder;

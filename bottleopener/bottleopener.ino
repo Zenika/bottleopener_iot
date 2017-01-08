@@ -11,7 +11,7 @@ ThingspeakSender thingspeakSender;
 ShiftrConnector shiftrConnector;
 /////////////////////////////////////////////
 
-#define PIN_BUTTON    7
+#define PIN_BUTTON   10
 #define PIN_LED      13
 
 //Global counter for this bottle opener
@@ -67,7 +67,7 @@ void sendCounter() {
 void logCounter() {
   logger->log("Button pressed ");
   logger->log((String) counter);
-  logger->log("times \n");
+  logger->log(" times \n");
 }
 
 
