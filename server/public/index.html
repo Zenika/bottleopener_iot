@@ -54,40 +54,6 @@
 
 </div>
 
-<template id="drinker-item2">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-12" style="margin-top: 20px;">
-                <div class="pricing-table">
-                    <div class="panel panel-primary" style="border: none;">
-                        <div class="controle-header panel-heading panel-heading-landing">
-                            <h1 class="panel-title panel-title-landing">
-                                {{drinker.name}}
-                            </h1>
-                        </div>
-                        <div class="controle-panel-heading panel-heading panel-heading-landing-box">
-                            {{drinker.quantity}} opened bottles
-                        </div>
-                        <div class="panel-body panel-body-landing">
-                            <table class="table">
-                                <tr v-for="(platform, index) in drinker.platforms">
-                                    <td width="50px"><i class="fa fa-check"></i></td>
-                                    <td>{{platform.name}}</td>
-                                    <td>{{platform.quantity}}</td>
-                                </tr>
-
-                            </table>
-                        </div>
-                        <div class="panel-footer panel-footer-landing">
-                            <img :src="gravatarURL('{{drinker.email}}')">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
-
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.poptrox.min.js"></script>
