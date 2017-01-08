@@ -70,18 +70,12 @@
                         </div>
                         <div class="panel-body panel-body-landing">
                             <table class="table">
-                                <tr>
+                                <tr v-for="(platform, index) in drinker.platforms">
                                     <td width="50px"><i class="fa fa-check"></i></td>
-                                    <td>30+ Accounts</td>
+                                    <td>{{platform.name}}</td>
+                                    <td>{{platform.quantity}}</td>
                                 </tr>
-                                <tr>
-                                    <td width="50px"><i class="fa fa-check"></i></td>
-                                    <td>150+ Projects</td>
-                                </tr>
-                                <tr>
-                                    <td width="50px"><i class="fa fa-check"></i></td>
-                                    <td>Lead Required</td>
-                                </tr>
+
                             </table>
                         </div>
                         <div class="panel-footer panel-footer-landing">
