@@ -7,34 +7,37 @@
 let drinkeritem = Vue.component(
 	'drinker-item',
 	{
-		template: "<div class='panel panel-default'> \
-		                <div class='panel-heading'> \
-		                     <h1 class='cover-heading'>{{drinker.name | uppercase }}'s quantity. </h1> \
+		template: '\
+		<div class="container"> \
+			<div class="row text-center"> \
+				<div class="col-md-12" style="margin-top: 20px;"> \
+					<div class="pricing-table"> \
+						<div class="panel panel-primary" style="border: none;"> \
+							<div class="controle-header panel-heading panel-heading-landing"> \
+								<h1 class="panel-title panel-title-landing" > \
+									{{drinker.name}} \
+								</h1> \
+							</div> \
+							<div class="controle-panel-heading panel-heading panel-heading-landing-box"> \
+								{{drinker.quantity}} opened bottles \
+							</div> \
+							<div class="panel-body panel-body-landing"> \
+								<table class="table"> \
+									<tr v-for="(platform, index) in drinker.platforms"> \
+										<td width="50px"><i class="fa fa-check"></i></td> \
+										<td>{{platform.name}}</td> \
+										<td>{{platform.quantity}}</td> \
+									</tr> \
+								</table> \
+							</div> \
+							<div class="panel-footer panel-footer-landing"> \
+								<img :src="gravatarURL(\'{{drinker.email}}\')"> \
+							</div> \
 						</div> \
-						<div class='panel-body'> \
-							{{drinker.quantity}} \
-							<!--ul class='item-list'> \
-							<li v-for='platform in platforms'> \
-								{{platform.name}} : {{platform.quantity}} \
-							</li> \
-							</ul--> \
-						</div> \
-						</div>",
-
-		props: ['drinker'],
-
-		methods: {
-			gravatarURL: function (email) {
-				return "https://www.gravatar.com/avatar/" + CryptoJS.MD5(email);
-			}
-		}
-	}
-);
-
-let drinkerItem = Vue.component(
-	'drinker-item2',
-	{
-		template: "#drinker-item2",
+					</div> \
+				</div> \
+			</div> \
+		</div>',
 
 		props: ['drinker'],
 
@@ -106,19 +109,19 @@ new Vue({
 		},
 
 		/*_setPlatformQuantityByDrinkerAndName: function (drinker, platformName, quantity) {
-			let platform = null;
-			for (platform of drinker.platforms) {
-				if (platformName === platform.name) {
-					platform.quantity = quantity;
-				}
-			}
+		 let platform = null;
+		 for (platform of drinker.platforms) {
+		 if (platformName === platform.name) {
+		 platform.quantity = quantity;
+		 }
+		 }
 
-			//no platform ? create a new one
-			let newPlatform = {"name": name, "quantity": quantity};
-			drinker.platforms.push(newPlatform);
+		 //no platform ? create a new one
+		 let newPlatform = {"name": name, "quantity": quantity};
+		 drinker.platforms.push(newPlatform);
 
-			return newPlatform;
-		},*/
+		 return newPlatform;
+		 },*/
 
 		/**
 		 * Try to find the drinker with that name in the database (here : the list) or create a new one.
