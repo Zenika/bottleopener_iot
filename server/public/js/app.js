@@ -65,7 +65,7 @@ new Vue({
 		this.ws.onopen = function (event) {
 			console.log("Websocket connection opened.");
 		};
-		this.ws.onmessage = function(event) {
+		this.ws.onmessage = function (event) {
 			let msg = JSON.parse(event.data);
 			self.addQuantityToDrinker(msg.name, msg.quantity);
 		};
@@ -102,5 +102,10 @@ new Vue({
 			return newDrinker;
 		},
 
-	}
+		gravatarURL: function (email) {
+			return "https://www.gravatar.com/avatar/" + CryptoJS.MD5(email);
+		}
+	},
+
+	computed: {}
 });
