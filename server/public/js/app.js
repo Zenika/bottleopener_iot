@@ -68,12 +68,14 @@ new Vue({
 			{
 				"name": "Gwen",
 				"quantity": 0,
-				"email": "gwennael.buchet@gmail.com"
+				"email": "gwennael.buchet@gmail.com",
+				"platforms": []
 			},
 			{
 				"name": "Adrien",
 				"quantity": 0,
-				"email": "legrand.ax@gmail.com"
+				"email": "legrand.ax@gmail.com",
+				"platforms": []
 			}
 		]
 	},
@@ -87,7 +89,7 @@ new Vue({
 		};
 		this.ws.onmessage = function (event) {
 			let msg = JSON.parse(event.data);
-			self.addQuantityToDrinker(msg.name, msg.quantity);
+			self.addQuantityToDrinker(msg);
 		};
 		this.ws.onerror = function (event) {
 			console.log("Websocket connection error : " + event);
@@ -95,11 +97,28 @@ new Vue({
 	},
 
 	methods: {
-		addQuantityToDrinker: function (drinkerName, quantity) {
+		addQuantityToDrinker: function (message) {
 
-			let drinker = this._getDrinkerByName(drinkerName);
-			drinker.quantity = quantity;
+			let drinker = this._getDrinkerByName(message.name);
+			drinker.quantity = message.quantity;
+			drinker.platforms = message.platforms;
+			//this._setPlatformQuantityByDrinkerAndName(message.name, message.platform, message.quantity);
 		},
+
+		/*_setPlatformQuantityByDrinkerAndName: function (drinker, platformName, quantity) {
+			let platform = null;
+			for (platform of drinker.platforms) {
+				if (platformName === platform.name) {
+					platform.quantity = quantity;
+				}
+			}
+
+			//no platform ? create a new one
+			let newPlatform = {"name": name, "quantity": quantity};
+			drinker.platforms.push(newPlatform);
+
+			return newPlatform;
+		},*/
 
 		/**
 		 * Try to find the drinker with that name in the database (here : the list) or create a new one.
