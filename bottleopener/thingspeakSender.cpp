@@ -29,9 +29,7 @@ void ThingspeakSender::sendMessage(const char* sender, int counter)
   Message::serialize(msg, buf, 128);
   
   ThingSpeak.setField(1, (String)sender);
-  ThingSpeak.setField(2, (String)"ThingSpeak");
-  ThingSpeak.setField(3, (int)counter);
-  //ThingSpeak.setField(4, String(buf));
+  ThingSpeak.setField(2, (int)counter);
 
   ThingSpeak.writeFields(THINGSPEAK_CHANNEL_NUMBER, THINGSPEAK_WRITE_API_KEY);  
 }
