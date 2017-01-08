@@ -2431,7 +2431,7 @@
 			-webkit-flex-direction: column;
 			-ms-flex-direction: column;
 			flex-direction: column;
-			width: calc(100% / 3);
+			width: calc(100% / 2);
 			padding-left: 2em;
 		}
 
