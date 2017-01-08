@@ -2620,7 +2620,7 @@
 
 	#footer {
 		text-align: center;
-		padding: 4em 0 4em 0;
+		padding: 1em 0 4em 0;
 	}
 
 		#footer:before {
@@ -2628,7 +2628,7 @@
 			border-top: solid 1px rgba(255, 255, 255, 0.25);
 			width: 10em;
 			display: block;
-			margin: 0 auto 3em auto;
+			margin: 0 auto 2em auto;
 		}
 
 		@media screen and (max-width: 1280px) {
@@ -2638,3 +2638,30 @@
 			}
 
 		}
+
+
+
+
+
+.company-logo {
+    width: 100%;
+    margin-top: .5rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.company-logo .logo-znk {
+    background-color: #fff;
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%;
+    margin-bottom: .5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.company-logo .logo-znk img {
+    height: 70%;
+    margin: 15%;
+}
