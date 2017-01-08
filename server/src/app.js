@@ -88,14 +88,13 @@ function _setPlatformQuantityByDrinkerAndName(drinker, platformName, quantity) {
 	for (platform of drinker.platforms) {
 		if (platformName === platform.name) {
 			platform.quantity = quantity;
+			return;
 		}
 	}
 
 	//no platform ? create a new one
 	let newPlatform = {"name": platformName, "quantity": quantity};
 	drinker.platforms.push(newPlatform);
-
-	return newPlatform;
 }
 
 /**
