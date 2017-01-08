@@ -59,6 +59,7 @@ new Vue({
 	},
 
 	created: function () {
+		let self = this;
 		this.ws = new WebSocket("ws://" + window.location.hostname + ":8081");
 
 		this.ws.onopen = function (event) {
@@ -66,7 +67,7 @@ new Vue({
 		};
 		this.ws.onmessage = function(event) {
 			let msg = JSON.parse(event.data);
-			this.addQuantityToDrinker(msg.name, msg.quantity);
+			self.addQuantityToDrinker(msg.name, msg.quantity);
 		};
 		this.ws.onerror = function (event) {
 			console.log("Websocket connection error : " + event);
