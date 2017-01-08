@@ -1,65 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<!--
+	Visualize by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title></title>
-
-    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="resource/cover.css" media="screen"/>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <title>Bottle Opener</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="assets/css/consumer.css"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
 </head>
 <body>
 
-<div class="site-wrapper">
+<!-- Wrapper -->
+<div id="wrapper">
 
-    <div class="site-wrapper-inner">
+    <!-- Header -->
+    <header id="header">
+        <span class="avatar"><img src="images/beer2.jpg" alt=""/></span>
+        <h1>Connected Bottle-Opener Back-office.</h1>
+        <h2>Test IoT platform the classy way...</h2>
+        <ul class="icons">
+            <li><a href="#" class="icon style2 fa-beer"><span class="label">Beer</span></a></li>
+            <li><a href="#" class="icon style2 fa-plug"><span class="label">Connected</span></a></li>
+            <li><a href="#" class="icon style2 fa-glass"><span class="label">Drink</span></a></li>
+        </ul>
+    </header>
 
-        <div class="cover-container">
+    <!-- Main -->
+    <section id="">
 
-            <div class="masthead clearfix">
-                <div class="inner">
-                    <h3 class="masthead-brand">Beer Bottle Opener</h3>
-                    <nav>
-                        <ul class="nav masthead-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">Drinkers</a></li>
-                        </ul>
-                    </nav>
-                </div>
+        <!-- Thumbnails -->
+        <section class="thumbnails" id="drinkersList">
+
+            <div is="drinker-item2"
+                 v-for="(drinker, index) in drinkers"
+                 :drinker="drinker">
+
             </div>
 
-            <div class="inner cover" id="drinkersList">
-                <figure>
-                    <img src="resource/noun_487221_cc.svg" alt="beer" width="320px" height="400px">
-                </figure>
+        </section>
 
-                <ul>
-                    <li
-                            is="drinker-item"
-                            v-for="(drinker, index) in drinkers"
-                            :drinker="drinker"
-                    ></li>
-                </ul>
-            </div>
+    </section>
 
-            <div class="mastfoot">
-                <div class="inner">
-                    <p><a href="http://www.zenika.com">Zenika</a> 2017.</p>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
+    <!-- Footer -->
+    <footer id="footer">
+        <p>&copy; Zenika 2017. All rights reserved. <br/>
+            Design: <a href="http://templated.co">TEMPLATED</a>. Demo Images: <a href="http://unsplash.com">Unsplash</a>.
+        </p>
+    </footer>
 
 </div>
 
+<template id="drinker-item2">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12" style="margin-top: 20px;">
+                <div class="pricing-table">
+                    <div class="panel panel-primary" style="border: none;">
+                        <div class="controle-header panel-heading panel-heading-landing">
+                            <h1 class="panel-title panel-title-landing">
+                                {{drinker.name}}
+                            </h1>
+                        </div>
+                        <div class="controle-panel-heading panel-heading panel-heading-landing-box">
+                            {{drinker.quantity}} opened bottles
+                        </div>
+                        <div class="panel-body panel-body-landing">
+                            <table class="table">
+                                <tr>
+                                    <td width="50px"><i class="fa fa-check"></i></td>
+                                    <td>30+ Accounts</td>
+                                </tr>
+                                <tr>
+                                    <td width="50px"><i class="fa fa-check"></i></td>
+                                    <td>150+ Projects</td>
+                                </tr>
+                                <tr>
+                                    <td width="50px"><i class="fa fa-check"></i></td>
+                                    <td>Lead Required</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="panel-footer panel-footer-landing">
+                            <img :src="gravatarURL('{{drinker.email}}')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.poptrox.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/main.js"></script>
 
 
 <script src="/vue/dist/vue.js"></script>

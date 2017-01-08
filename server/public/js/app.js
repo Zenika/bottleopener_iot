@@ -23,7 +23,25 @@ let drinkeritem = Vue.component(
 
 		props: ['drinker'],
 
-		created: function () {
+		methods: {
+			gravatarURL: function (email) {
+				return "https://www.gravatar.com/avatar/" + CryptoJS.MD5(email);
+			}
+		}
+	}
+);
+
+let drinkerItem = Vue.component(
+	'drinker-item2',
+	{
+		template: "#drinker-item2",
+
+		props: ['drinker'],
+
+		methods: {
+			gravatarURL: function (email) {
+				return "https://www.gravatar.com/avatar/" + CryptoJS.MD5(email);
+			}
 		}
 	}
 );
@@ -50,10 +68,12 @@ new Vue({
 			{
 				"name": "Gwen",
 				"quantity": 0,
+				"email": "gwennael.buchet@gmail.com"
 			},
 			{
 				"name": "Adrien",
-				"quantity": 0
+				"quantity": 0,
+				"email": "legrand.ax@gmail.com"
 			}
 		]
 	},
@@ -100,10 +120,6 @@ new Vue({
 			this.drinkers.push(newDrinker);
 
 			return newDrinker;
-		},
-
-		gravatarURL: function (email) {
-			return "https://www.gravatar.com/avatar/" + CryptoJS.MD5(email);
 		}
 	},
 

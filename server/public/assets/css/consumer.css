@@ -6,13 +6,13 @@
     -o-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -webkit-transition: all .3s ease;
-    border-radius: 0px;
+    border-radius: 0;
 }
 .pricing-table:hover {
-    box-shadow: 0px 0px 30px rgba(0,0,0, .2);
+    box-shadow: 0 0 30px rgba(0,0,0, .2);
 }
 .pricing-table:hover>.panel-footer-landing {
-    box-shadow: 0px 0px 30px rgba(0,0,0, .05) inset;
+    box-shadow: 0 0 30px rgba(0,0,0, .05) inset;
     -webkit-transition:  all .3s ease;
 }
 .pricing-table:hover>.panel>.panel-body-landing {
@@ -46,6 +46,7 @@
 .pricing-table:hover>.panel>.controle-header>.panel-title-landing {
     color: #fff !important;
     -webkit-transition:  all .3s ease;
+    text-align: center;
 }
 .pricing-table:hover>.panel>.panel-body-landing>.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
     color: #fff !important;
@@ -66,11 +67,14 @@
     padding: 3px !important;
     border: solid 2px #5CB85C !important;
     border-top: none !important;
+    text-align: center;
+    font-weight: bolder;
 }
 .panel-title-landing {
     color: #626367 !important;
     font-size: 25px;
     font-weight: bold;
+    text-align: center;
 }
 .panel-body-landing {
     border: solid 2px #ccc !important;
@@ -82,4 +86,5 @@
     border-bottom-left-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
     border-top: none !important;
+    text-align: center;
 }
