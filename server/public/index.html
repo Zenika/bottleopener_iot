@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="resource/cover.css" media="screen"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">Beer Bottle Opener</h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#">Drinkers</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="inner cover" id="drinkersList">
+                <figure>
+                    <img src="resource/noun_487221_cc.svg" alt="beer" width="320px" height="400px">
+                </figure>
+
+                <ul>
+                    <li
+                            is="drinker-item"
+                            v-for="(drinker, index) in drinkers"
+                            :drinker="drinker"
+                    ></li>
+                </ul>
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p><a href="http://www.zenika.com">Zenika</a> 2017.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="/vue/dist/vue.js"></script>
+<script src="/vue-resource/dist/vue-resource.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
