@@ -17,10 +17,6 @@ exports.init = function (mainCallback) {
 		console.log('shiftrClient has connected!');
 
 		shiftrClient.subscribe(keys.SHIFTR_NAMESPACE);
-
-		/*setInterval(function () {
-			shiftrClient.publish(keys.SHIFTR_NAMESPACE, 'world');
-		}, 1000);*/
 	});
 
 	shiftrClient.on('message', function (topic, message) {
