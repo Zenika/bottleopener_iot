@@ -53,26 +53,12 @@ let drinkers = [
 	{
 		"name": "Gwen",
 		"quantity": 0,
-		"platforms": [
-			{
-				"name": "Shiftr",
-				"quantity": 1
-			},
-			{
-				"name": "marcel",
-				"quantity": 17
-			}
-		]
+		"platforms": []
 	},
 	{
 		"name": "Adrien",
 		"quantity": 0,
-		"platforms": [
-			{
-				"name": "aws",
-				"quantity": 12
-			}
-		]
+		"platforms": []
 	}
 ];
 
