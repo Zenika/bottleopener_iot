@@ -106,7 +106,7 @@ function _setPlatformQuantityByDrinkerAndName(drinker, platformName, quantity) {
 	}
 
 	//no platform ? create a new one
-	let newPlatform = {"name": name, "quantity": quantity};
+	let newPlatform = {"name": platformName, "quantity": quantity};
 	drinker.platforms.push(newPlatform);
 
 	return newPlatform;
