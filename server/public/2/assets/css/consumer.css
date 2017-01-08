@@ -1,0 +1,85 @@
+
+.pricing-table {
+    max-width: 368px;
+    margin: 0 auto;
+    transition: all .3s ease;
+    -o-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    border-radius: 0px;
+}
+.pricing-table:hover {
+    box-shadow: 0px 0px 30px rgba(0,0,0, .2);
+}
+.pricing-table:hover>.panel-footer-landing {
+    box-shadow: 0px 0px 30px rgba(0,0,0, .05) inset;
+    -webkit-transition:  all .3s ease;
+}
+.pricing-table:hover>.panel>.panel-body-landing {
+    background: #5CB85C;
+    -webkit-transition:  all .3s ease;
+}
+.pricing-table:hover>.panel>.panel-heading-landing-box {
+    background: #f0f0f0 !important;
+    color: #333 !important;
+    -webkit-transition:  all .3s ease;
+}
+.pricing-table:hover>.panel>.controle-header {
+    background: #5CB85C !important;
+    /*    border: solid 2px #5CB85C !important;*/
+    -webkit-transition:  all .3s ease;
+}
+.pricing-table:hover>.panel>.panel-footer {
+    background: #5CB85C !important;
+    /*    border: solid 2px #5CB85C !important;*/
+    -webkit-transition:  all .3s ease;
+}
+.pricing-table:hover>.panel>.panel-footer>.btn {
+    border: solid 1px #fff !important;
+    -webkit-transition:  all .3s ease;
+}
+.btn-price:hover {
+    background: #fff !important;
+    color: #5CB85C !important;
+    -webkit-transition:  all .3s ease;
+}
+.pricing-table:hover>.panel>.controle-header>.panel-title-landing {
+    color: #fff !important;
+    -webkit-transition:  all .3s ease;
+}
+.pricing-table:hover>.panel>.panel-body-landing>.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    color: #fff !important;
+    -webkit-transition:  all .3s ease;
+}
+.panel-heading-landing {
+    background: #f7f7f7 !important;
+    padding: 20px !important;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    border: solid 2px #5CB85C !important;
+    border-bottom: none !important;
+}
+.panel-heading-landing-box {
+    background: #5CB85C !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    padding: 3px !important;
+    border: solid 2px #5CB85C !important;
+    border-top: none !important;
+}
+.panel-title-landing {
+    color: #626367 !important;
+    font-size: 25px;
+    font-weight: bold;
+}
+.panel-body-landing {
+    border: solid 2px #ccc !important;
+    border-top: none !important;
+    border-bottom: none !important;
+}
+.panel-footer-landing {
+    border: solid 2px #ccc !important;
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    border-top: none !important;
+}
