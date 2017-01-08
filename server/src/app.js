@@ -52,11 +52,27 @@ let serverws = ws.createServer(function (conn) {
 let drinkers = [
 	{
 		"name": "Gwen",
-		"quantity": 0
+		"quantity": 0,
+		"platforms": [
+			{
+				"name": "Shiftr",
+				"quantity": 1
+			},
+			{
+				"name": "marcel",
+				"quantity": 17
+			}
+		]
 	},
 	{
 		"name": "Adrien",
-		"quantity": 0
+		"quantity": 0,
+		"platforms": [
+			{
+				"name": "aws",
+				"quantity": 12
+			}
+		]
 	}
 ];
 
@@ -75,12 +91,27 @@ function _getDrinkerByName(name) {
 	}
 
 	//no drinker ? create a new one
-	let newDrinker = {"name": name, "quantity": 0};
+	let newDrinker = {"name": name, "quantity": 0, "platforms": []};
 	drinkers.push(newDrinker);
 
 	return newDrinker;
 }
 
+function _setPlatformQuantityByDrinkerAndName(drinker, platformName, quantity) {
+	let platform = null;
+	for (platform of drinker.platforms) {
+		if (platformName === platform.name) {
+			platform.quantity = quantity;
+		}
+	}
+
+	//no platform ? create a new one
+	let newPlatform = {"name": name, "quantity": quantity};
+	drinker.platforms.push(newPlatform);
+
+	return newPlatform;
+}
+s
 /**
  * Send new values to the front end.
  * Called by each connector when they received a message from their platform.
@@ -94,6 +125,8 @@ function openBottle(drinkerName, quantity, platform) {
 	let drinker = _getDrinkerByName(drinkerName);
 	//let oldQty = parseInt(drinker.quantity);
 	drinker.quantity = /*oldQty +*/ quantity;
+
+	_setPlatformQuantityByDrinkerAndName(drinker, platform, quantity);
 
 	console.log(drinker.name + " opened " + drinker.quantity + " bottles.");
 
