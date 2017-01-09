@@ -26,3 +26,4 @@ exports.init = function (mainCallback) {
 		mainCallback(json.sender, json.quantity, "Shiftr.io");
 	});
 };
+

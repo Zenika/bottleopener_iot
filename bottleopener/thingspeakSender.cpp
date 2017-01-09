@@ -5,8 +5,6 @@
 #include "BridgeClient.h"
 BridgeClient client;
 
-#include "message.h"
-
 #include "logger.h"
 #include "secretKeys.h"
 
@@ -19,17 +17,14 @@ void ThingspeakSender::init()
   logger->log(" Done ! \n");
 }
 
-void ThingspeakSender::sendMessage(const char* sender, int counter)
+void ThingspeakSender::sendMessage(String sender, int counter)
 {
-  logger->log("Sending to ThingSpeak...\n");
-
-  char buf[128];
-
-  Message msg(sender, "ThingSpeak", counter);
-  Message::serialize(msg, buf, 128);
+  logger->log("Sending to ThingSpeak...");
   
-  ThingSpeak.setField(1, (String)sender);
+  ThingSpeak.setField(1, sender);
   ThingSpeak.setField(2, (int)counter);
 
   ThingSpeak.writeFields(THINGSPEAK_CHANNEL_NUMBER, THINGSPEAK_WRITE_API_KEY);  
+  
+  logger->log(" done. \n");
 }

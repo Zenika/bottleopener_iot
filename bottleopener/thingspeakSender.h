@@ -1,9 +1,11 @@
 #pragma once
 
+#include <Arduino.h>
+
 class ThingspeakSender {
     
   public :
-    void sendMessage(const char* sender, int counter);
+    void sendMessage(String sender, int counter);
 
     void init();
 

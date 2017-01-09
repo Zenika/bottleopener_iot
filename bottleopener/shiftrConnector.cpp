@@ -1,6 +1,8 @@
 #include "shiftrConnector.h"
 
-#include "message.h"
+#include <Arduino.h>
+
+//#include "message.h"
 
 #include "logger.h"
 #include "secretKeys.h"
@@ -9,7 +11,8 @@
    Only necessary for Shiftr.io API
 */
 void messageReceived(String topic, String payload, char * bytes, unsigned int length) {
-  logger->log("Receiving from Shiftr.io...\n");
+  logger->log("Receiving from Shiftr.io...");
+  logger->log(" done. \n");
 }
 
 void ShiftrConnector::init()
@@ -43,14 +46,16 @@ void ShiftrConnector::loop()
   }
 }
 
-void ShiftrConnector::sendMessage(const char* sender, int counter)
+void ShiftrConnector::sendMessage(String sender, int counter)
 {
-  logger->log("Sending to Shiftr...\n");
+  logger->log("Sending to Shiftr...");
   
-  char buf[128];
-  
-  Message msg(sender, "Shiftr", counter);
-  Message::serialize(msg, buf, 128);
-  
-  client.publish(SHIFTR_NAMESPACE, buf);
+  //char buf[128];
+  //Message msg(sender, counter);
+  //Message::serialize(msg, buf, 128);
+
+  String msg = "{\"sender\" : \"" + sender + "\", \"quantity\" : " + String(counter) + "}";
+
+  client.publish(SHIFTR_NAMESPACE, msg);
+  logger->log(" done. \n");
 }
