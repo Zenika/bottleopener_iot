@@ -29,7 +29,7 @@ let drinkeritem = Vue.component(
 								</table> \
 							</div> \
 							<div class="panel-footer panel-footer-landing"> \
-								<img :src="gravatarURL(\'{{drinker.email}}\')"> \
+								<img :src="gravatarURL(drinker.email)"> \
 							</div> \
 						</div> \
 					</div> \
@@ -41,6 +41,7 @@ let drinkeritem = Vue.component(
 
 		methods: {
 			gravatarURL: function (email) {
+				console.log(email);
 				return "https://www.gravatar.com/avatar/" + CryptoJS.MD5(email);
 			}
 		}
