@@ -10,6 +10,7 @@ class Logger {
     
     void init();
     void log(String text);
+    void log(int text);
 
     Logger() {};
 };

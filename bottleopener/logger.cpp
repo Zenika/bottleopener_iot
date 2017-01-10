@@ -17,3 +17,10 @@ void Logger::log(String text)
 #endif
 }
 
+void Logger::log(int text)
+{
+#ifdef LOG_TO_CONSOLE
+  Serial.print(text);
+#endif
+}
+
