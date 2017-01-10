@@ -23,6 +23,10 @@ int rc = -100; // return value placeholder
 bool success_connect = false; // whether it is connected
 int inPin = 10;   // pushbutton connected to digital pin 7
 int val = LOW;     // variable to store the read value
+int buttonState = LOW;
+int lastButtonState = LOW;
+long lastDebounceTime = 0;
+long debounceDelay = 50;
 
 void setup() {
   // Start Serial for print-out and wait until it's ready
@@ -30,13 +34,13 @@ void setup() {
   while (!Serial);
 
   //
-   Serial.println("Try to connect to AWS IoT ...\n");
+  Serial.println("Try to connect to AWS IoT ...\n");
   pinMode(inPin, INPUT);
   digitalWrite(inPin, LOW);
   char curr_version[80];
   snprintf_P(curr_version, 80, PSTR("AWS IoT SDK Version(dev) %d.%d.%d-%s\n"), VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_TAG);
   Serial.println(curr_version);
-  
+
   // Set up the client
   if ((rc = myClient.setup("decap")) == 0) {
     // Load user configuration
@@ -64,13 +68,51 @@ void setup() {
   Serial.println("... done \n");
 }
 
+boolean debounce() {
+
+  boolean retVal = false;
+  int reading = digitalRead(inPin);
+  if (reading != lastButtonState) {
+    Serial.print(1);
+    lastDebounceTime = millis();
+  }
+  if ((millis() - lastDebounceTime) > debounceDelay) {
+    Serial.print(2);
+    if (reading != buttonState) {
+      Serial.print(3);
+      buttonState = reading;
+      if (buttonState == HIGH) {
+        Serial.print(4);
+        retVal = true;
+      }
+    }
+  }
+  lastButtonState = reading;
+  return retVal;
+}
+
+void logCounter() {
+  Serial.print("Button pressed ");
+  Serial.print(cnt);
+  Serial.print(" times \n");
+}
+
+void sendCounter() {
+  sprintf(msg, "{\"Adrien\": %d }", digitalRead(inPin));
+  if ((rc = myClient.publish("beer", msg, strlen(msg), 1, false)) != 0) {
+    Serial.println(F("Publish failed!"));
+    Serial.println(rc);
+  }
+}
+
 void loop() {
 
   if (success_connect) {
-    sprintf(msg, "{\"buttonState\": %d }", digitalRead(inPin));
-    if ((rc = myClient.publish("beer", msg, strlen(msg), 1, false)) != 0) {
-      Serial.println(F("Publish failed!"));
-      Serial.println(rc);
+    boolean pressed = debounce();
+    if (pressed == true) {
+      cnt++;
+      sendCounter();
+      logCounter();
     }
 
     // Get a chance to run a callback
@@ -78,6 +120,5 @@ void loop() {
       Serial.println("Yield failed!");
       Serial.println(rc);
     }
-    delay(500);
   }
 }
