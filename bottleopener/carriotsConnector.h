@@ -1,7 +1,9 @@
 #pragma once
 
+#define __PLATFORM_CARRIOTS__ 1
+
 #include <Process.h>
-//#include "SendCarriotsYun.h"
+#include "SendCarriotsYun.h"
 
 class CarriotsConnector {
 
@@ -14,6 +16,6 @@ class CarriotsConnector {
     CarriotsConnector() {};
 
   private:
-    //SendCarriotsYun carriotsSender;
+    SendCarriotsYun carriotsSender;
 };
 
