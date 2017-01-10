@@ -16,6 +16,9 @@ CarriotsConnector carriotsConnector;
 
 #include "initialStateConnector.h"
 InitialStateConnector initialStateConnector;
+
+#include "awsConnector.h"
+AWSConnector awsConnector;
 /////////////////////////////////////////////
 
 #define PIN_BUTTON   10
@@ -38,6 +41,7 @@ void setup() {
   shiftrConnector.init();
   carriotsConnector.init();
   initialStateConnector.init();
+  awsConnector.init();
 
   //Everything seems to be ok, let's start !
   logger->log("\nBottle Opener up, Let's start to play :) !!!\n");
@@ -70,6 +74,7 @@ void sendCounter() {
   shiftrConnector.sendMessage("Gwen", counter);
   carriotsConnector.sendMessage("Gwen", counter);
   initialStateConnector.sendMessage("Gwen", counter);
+  awsConnector.sendMessage("Adrien", counter);
 }
 
 /**

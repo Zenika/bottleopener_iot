@@ -1,6 +1,6 @@
 #pragma once
 
-#define __PLATFORM_CARRIOTS__ 1
+//#define __PLATFORM_CARRIOTS__ 1
 
 #include <Process.h>
 #include "SendCarriotsYun.h"
