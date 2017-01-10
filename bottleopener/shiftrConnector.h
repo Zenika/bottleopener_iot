@@ -1,6 +1,6 @@
 #pragma once
 
-//#define __PLATFORM_SHIFTR__ 1
+#include "platforms.h"
 
 #include <Arduino.h>
 

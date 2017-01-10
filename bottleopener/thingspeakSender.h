@@ -1,6 +1,6 @@
 #pragma once
 
-//#define __PLATFORM_THINGSPEAK__ 1
+#include "platforms.h"
 
 #include <Arduino.h>
 

@@ -1,6 +1,7 @@
 #include <Bridge.h>
 
 #include "logger.h"
+#include "platforms.h"
 
 /////////////////////////////////////////////
 // Include of Iot Platform's connectors
@@ -50,8 +51,10 @@ void setup() {
    Arduino loop...
 */
 void loop() {
+#ifdef __PLATFORM_SHIFTR__
   //need to refresh shiftr API in order to send and receive new messages
   shiftrConnector.loop();
+#endif
 
   boolean pressed = debounce();
   if (pressed == true) {
