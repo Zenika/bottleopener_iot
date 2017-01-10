@@ -4,14 +4,21 @@
 
 /////////////////////////////////////////////
 // Include of Iot Platform's connectors
+
 #include "thingspeakSender.h"
 ThingspeakSender thingspeakSender;
 
 #include "shiftrConnector.h"
 ShiftrConnector shiftrConnector;
+
+#include "carriotsConnector.h"
+CarriotsConnector carriotsConnector;
+
+#include "initialStateConnector.h"
+InitialStateConnector initialStateConnector;
 /////////////////////////////////////////////
 
-#define PIN_BUTTON    7
+#define PIN_BUTTON   10
 #define PIN_LED      13
 
 //Global counter for this bottle opener
@@ -29,6 +36,8 @@ void setup() {
   logger->log("Start setup connection with IoT platforms...\n");
   thingspeakSender.init();
   shiftrConnector.init();
+  carriotsConnector.init();
+  initialStateConnector.init();
 
   //Everything seems to be ok, let's start !
   logger->log("\nBottle Opener up, Let's start to play :) !!!\n");
@@ -59,6 +68,8 @@ void loop() {
 void sendCounter() {
   thingspeakSender.sendMessage("Gwen", counter);
   shiftrConnector.sendMessage("Gwen", counter);
+  carriotsConnector.sendMessage("Gwen", counter);
+  initialStateConnector.sendMessage("Gwen", counter);
 }
 
 /**
@@ -67,7 +78,7 @@ void sendCounter() {
 void logCounter() {
   logger->log("Button pressed ");
   logger->log((String) counter);
-  logger->log("times \n");
+  logger->log(" times \n");
 }
 
 

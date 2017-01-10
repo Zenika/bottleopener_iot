@@ -1,9 +1,12 @@
 #pragma once
 
+//#define __PLATFORM_THINGSPEAK__ 1
+#include <Arduino.h>
+
 class ThingspeakSender {
     
   public :
-    void sendMessage(const char* sender, int counter);
+    void sendMessage(String sender, int counter);
 
     void init();
 

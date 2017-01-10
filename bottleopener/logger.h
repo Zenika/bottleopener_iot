@@ -3,7 +3,7 @@
 #include <Arduino.h>
 
 //comment following line to disable Console log and be able to run application without it
-//#define LOG_TO_CONSOLE  1
+#define LOG_TO_CONSOLE  1
 
 class Logger {
   public :

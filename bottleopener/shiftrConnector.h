@@ -1,12 +1,16 @@
 #pragma once
 
+//#define __PLATFORM_SHIFTR__ 1
+
+#include <Arduino.h>
+
 //https://github.com/256dpi/arduino-mqtt
 #include <YunMQTTClient.h>
 
 class ShiftrConnector {
 
   public :
-    void sendMessage(const char* sender, int counter);
+    void sendMessage(String sender, int counter);
 
     void init();
 

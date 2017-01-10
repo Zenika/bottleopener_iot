@@ -1,6 +1,10 @@
 .idea/
-server/node_modules/
+/server/node_modules/
+/server/public/public.iml
+
+yarn.lock
 
 #API keys files
-secretKeys.h
-server/src/connectors/secretKeys.js
+/bottleopener/secretKeys.h
+/server/src/connectors/secretKeys.js
+
