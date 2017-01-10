@@ -1,6 +1,6 @@
 #pragma once
 
-#define __PLATFORM_INITIALSTATE__ 1
+//#define __PLATFORM_INITIALSTATE__ 1
 
 #include <Arduino.h>
 
