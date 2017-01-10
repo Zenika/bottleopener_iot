@@ -1,5 +1,7 @@
 #pragma once
 
+//#define __PLATFORM_SHIFTR__ 1
+
 #include <Arduino.h>
 
 //https://github.com/256dpi/arduino-mqtt
