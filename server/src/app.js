@@ -13,6 +13,10 @@ shiftr.init(openBottle);
 let thingspeak = require("./connectors/thingspeak.module");
 thingspeak.init(openBottle);
 
+let awsIoT = require("./connectors/awsIoT.module");
+awsIoT.init(openBottle);
+
+
 //let carriots = require("./connectors/carriots.module");
 //carriots.init(openBottle);
 
