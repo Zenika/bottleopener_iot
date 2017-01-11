@@ -17,7 +17,7 @@
 #include "aws_iot_config.h"
 
 aws_iot_mqtt_client myClient; // init iot_mqtt_client
-char msg[32]; // read-write buffer
+char msg[35]; // read-write buffer
 int cnt = 0; // loop counts
 int rc = -100; // return value placeholder
 bool success_connect = false; // whether it is connected
@@ -73,16 +73,12 @@ boolean debounce() {
   boolean retVal = false;
   int reading = digitalRead(inPin);
   if (reading != lastButtonState) {
-    Serial.print(1);
     lastDebounceTime = millis();
   }
   if ((millis() - lastDebounceTime) > debounceDelay) {
-    Serial.print(2);
     if (reading != buttonState) {
-      Serial.print(3);
       buttonState = reading;
       if (buttonState == HIGH) {
-        Serial.print(4);
         retVal = true;
       }
     }
@@ -98,7 +94,7 @@ void logCounter() {
 }
 
 void sendCounter() {
-  sprintf(msg, "{\"Adrien\": %d }", digitalRead(inPin));
+  sprintf(msg, "{\"sender\":\"Adrien\",\"quantity\":%d }", cnt);
   if ((rc = myClient.publish("beer", msg, strlen(msg), 1, false)) != 0) {
     Serial.println(F("Publish failed!"));
     Serial.println(rc);
