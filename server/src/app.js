@@ -13,6 +13,9 @@ shiftr.init(openBottle);
 let thingspeak = require("./connectors/thingspeak.module");
 thingspeak.init(openBottle);
 
+//let carriots = require("./connectors/carriots.module");
+//carriots.init(openBottle);
+
 // END : INIT CONNCETORS //////////////////////////////
 
 let bodyParser = require('body-parser');

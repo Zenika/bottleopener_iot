@@ -23,7 +23,7 @@ void CarriotsConnector::sendMessage(String sender, int counter)
   logger->log("Sending to Carriots...");
 
   String msg[2][2] = {{"sender", sender}, {"quantity", (String)counter}};
-  this->carriotsSender.send(msg, 2, CARRIOTS_APIKEY, CARRIOTS_DEVICEKEY);
+  logger->log(this->carriotsSender.send(msg, 2, CARRIOTS_APIKEY, CARRIOTS_DEVICEKEY));
 
   logger->log(" done \n");
 #endif
