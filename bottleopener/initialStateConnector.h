@@ -15,9 +15,11 @@ class InitialStateConnector {
 
     //default constructor
     InitialStateConnector() {};
-    
+
+#ifdef __PLATFORM_INITIALSTATE__
   private:
     String signalName[IS_NUM_SIGNALS] = {"sender", "quantity"};
     String signalData[IS_NUM_SIGNALS];
+#endif
 };
 

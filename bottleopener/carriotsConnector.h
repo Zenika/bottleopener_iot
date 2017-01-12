@@ -2,8 +2,12 @@
 
 #include "platforms.h"
 
+#include <Arduino.h>
+
+#ifdef __PLATFORM_CARRIOTS__
 #include <Process.h>
 #include "SendCarriotsYun.h"
+#endif
 
 class CarriotsConnector {
 
@@ -15,7 +19,9 @@ class CarriotsConnector {
     //default constructor
     CarriotsConnector() {};
 
+#ifdef __PLATFORM_CARRIOTS__
   private:
     SendCarriotsYun carriotsSender;
+#endif
 };
 
