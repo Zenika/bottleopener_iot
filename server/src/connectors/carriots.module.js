@@ -27,9 +27,10 @@ exports.init = function (mainCallback) {
 				let body = [];
 				body.push(chunk);
 				let msg = JSON.parse(body.toString());
-				let data = msg.result[0].data;
-
-				mainCallback(data.sender, data.quantity, "Carriots");
+				if (undefined !== msg && undefined !== msg.result) {
+					let data = msg.result[0].data;
+					mainCallback(data.sender, data.quantity, "Carriots");
+				}
 			});
 		});
 
@@ -38,6 +39,6 @@ exports.init = function (mainCallback) {
 		});
 		req.end();
 
-	}, 5000);
+	}, 10000);
 
 };
