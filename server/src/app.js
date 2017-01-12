@@ -119,8 +119,6 @@ function openBottle(drinkerName, quantity, platform) {
 
 	_setPlatformQuantityByDrinkerAndName(drinker, platform, quantity);
 
-	console.log(drinker.name + " opened " + drinker.quantity + " bottles.");
-
 	serverws.connections.forEach(function (conn) {
 		conn.sendText(JSON.stringify(drinker));
 	})
