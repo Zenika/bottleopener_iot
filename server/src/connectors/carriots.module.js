@@ -4,22 +4,21 @@ let https = require('https');
 
 
 let keys = require("./secretKeys.js");
-let mqtt = require('mqtt');
 
 exports.init = function (mainCallback) {
-
-	let device = keys.CARRIOTS_DEVICEKEY;
-	let apikey = keys.CARRIOTS_APIKEY;
 
 	let options = {
 		host: "api.carriots.com",
 		path: "/streams",
 		method: "GET",
 		headers: {
-			"User-Agent": "NodeJS-carriots.com-Client",
-			"Content-Type": "application/vnd.carriots.api.v2+json;q=7",
-			"Accept": "application/vnd.carriots.api.v2+json;q=7",
-			"Carriots.apikey": apikey
+			"Accept": "application/json",
+			"Accept-Encoding": "gzip, deflate, sdch, br",
+			"Accept-Language": "fr-FR,fr;q=0.8,en-US;q=0.6,en;q=0.4",
+			"carriots.apiKey": keys.CARRIOTS_APIKEY,
+			"Connection": "keep-alive",
+			"Content-Type": "application/json",
+			"Host": "api.carriots.com"
 		}
 	};
 
@@ -41,5 +40,5 @@ exports.init = function (mainCallback) {
 			console.log("problem with request: " + e.message);
 		});
 		req.end();
-	}, 10000);
+	}, 1000);
 };
