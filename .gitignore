@@ -8,3 +8,4 @@ yarn.lock
 /bottleopener/secretKeys.h
 /server/src/connectors/secretKeys.js
 
+/server/certs/
