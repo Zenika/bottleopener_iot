@@ -22,35 +22,31 @@ exports.init = function (mainCallback) {
 	   debug: true
 	});
 
-	var timeout;
-	var count = 0;
-	const minimumDelay = 250;
-
 	device.subscribe('beer_sub');
 
 	device
 	   .on('connect', function() {
-		  console.log('connect');
+		  console.log('Connected to AWS IoT.');
 	   });
 	device
 	   .on('close', function() {
-		  console.log('close');
+		  console.log('Connexion to AWS IoT closed');
 	   });
 	device
 	   .on('reconnect', function() {
-		  console.log('reconnect');
+		  console.log('Reconnecting to AWS IoT ...');
 	   });
 	device
 	   .on('offline', function() {
-		  console.log('offline');
+		  console.log('Application\'s offline');
 	   });
 	device
 	   .on('error', function(error) {
-		  console.log('error', error);
+		  console.log('Error with AWS IoT connexion', error);
 	   });
 	device
 	   .on('message', function (topic, message) {
-			console.log('new message:', topic, message.toString());
+			console.log('New message from AWS IoT :', topic, message.toString());
 			let json = JSON.parse(message);
 
 			mainCallback(json.sender, json.quantity, "AWS IoT");
