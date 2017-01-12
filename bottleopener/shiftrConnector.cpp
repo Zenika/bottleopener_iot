@@ -30,8 +30,8 @@ void ShiftrConnector::init()
 #endif
 }
 
-void ShiftrConnector::connect() {
 #ifdef __PLATFORM_SHIFTR__
+void ShiftrConnector::connect() {
   logger->log("\nTry to connect to Shiftr ...");
 
   while (!client.connect("arduino", SHIFTR_DEVICE_LOGIN, SHIFTR_DEVICE_PWD)) {
@@ -40,8 +40,8 @@ void ShiftrConnector::connect() {
   }
 
   logger->log(" Done ! \n");
-#endif
 }
+#endif
 
 void ShiftrConnector::loop()
 {

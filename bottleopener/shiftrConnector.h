@@ -4,8 +4,10 @@
 
 #include <Arduino.h>
 
+#ifdef __PLATFORM_SHIFTR__
 //https://github.com/256dpi/arduino-mqtt
 #include <YunMQTTClient.h>
+#endif
 
 class ShiftrConnector {
 
@@ -20,8 +22,10 @@ class ShiftrConnector {
     ShiftrConnector() {};
 
   private :
+#ifdef __PLATFORM_SHIFTR__
     YunMQTTClient client;
 
     void connect();
+#endif
 };
 
