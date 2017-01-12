@@ -89,3 +89,15 @@
     text-align: center;
     padding-top: 10px;
 }
+
+.gravatar {
+    height: 4rem;
+    width: 4rem;
+    border: solid rgba(0, 0, 0, 0.3) 1px;
+    border-radius: 50%;
+    margin-bottom: .5rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

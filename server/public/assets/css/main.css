@@ -2640,9 +2640,6 @@
 		}
 
 
-
-
-
 .company-logo {
     width: 100%;
     margin-top: .5rem;
@@ -2651,7 +2648,7 @@
     -ms-flex-direction: column;
     flex-direction: column;
 }
-.company-logo .logo-znk {
+.logo-znk {
     background-color: #fff;
     height: 8rem;
     width: 8rem;

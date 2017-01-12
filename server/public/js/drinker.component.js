@@ -29,7 +29,7 @@ let drinkeritem = Vue.component(
 								</table> \
 							</div> \
 							<div class="panel-footer panel-footer-landing"> \
-								<img :src="gravatarURL(drinker.email)"> \
+								<img :src="gravatarURL(drinker.email)" class="gravatar"> \
 							</div> \
 						</div> \
 					</div> \
