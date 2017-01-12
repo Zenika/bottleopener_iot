@@ -28,7 +28,7 @@ new Vue({
 			{
 				"name": "Adrien",
 				"quantity": 0,
-				"email": "legrand.ax@gmail.com",
+				"email": "adrien.legrand@zenika.com",
 				"platforms": []
 			}
 		]
