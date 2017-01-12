@@ -40,5 +40,5 @@ exports.init = function (mainCallback) {
 			console.log("problem with request: " + e.message);
 		});
 		req.end();
-	}, 1000);
+	}, 5000);
 };
