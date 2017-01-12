@@ -21,6 +21,10 @@ module.exports = Object.freeze(
 		SHIFTR_DEVICE_LOGIN: "",
 		SHIFTR_DEVICE_PWD: "",
 
+		//Carriots
+		CARRIOTS_APIKEY: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+		CARRIOTS_DEVICEKEY: "xxx@yyy",
+
 		//AWS IoT Cas & config
 		AWS_IOT_MQTT_HOST: "XXXXXXXXXXXXXXXXx.amazonaws.com",
 		AWS_IOT_MQTT_PORT: 8883,
