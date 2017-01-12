@@ -22,17 +22,13 @@ module.exports = Object.freeze(
 		SHIFTR_DEVICE_PWD: "",
 
 		//AWS IoT Cas & config
-        AWS_IOT_MQTT_HOST: "",
-        AWS_IOT_MQTT_PORT: 8883,
-        // your port (default is 8883)
-        AWS_IOT_CLIENT_ID: "",
-        AWS_IOT_MY_THING_NAME: "",
-        AWS_IOT_ROOT_CA_FILENAME: "",
-        AWS_IOT_CERTIFICATE_FILENAME: "",
-        AWS_IOT_PRIVATE_KEY_FILENAME: "",
-        AWS_IOT_PATH_PREFIX: "/path/to/your/certs/",
-        AWS_IOT_ROOT_CA_PATH: AWS_IOT_PATH_PREFIX+AWS_IOT_ROOT_CA_FILENAME,
-        AWS_IOT_CERTIFICATE_PATH: AWS_IOT_PATH_PREFIX+AWS_IOT_CERTIFICATE_FILENAME,
-        AWS_IOT_PRIVATE_KEY_PATH: AWS_IOT_PATH_PREFIX+AWS_IOT_PRIVATE_KEY_FILENAME
+		AWS_IOT_MQTT_HOST: "XXXXXXXXXXXXXXXXx.amazonaws.com",
+		AWS_IOT_MQTT_PORT: 8883,
+		// your port (default is 8883)
+		AWS_IOT_CLIENT_ID: "",
+		AWS_IOT_MY_THING_NAME: "",
+		AWS_IOT_ROOT_CA_FILENAME: "/root/cert/path",
+		AWS_IOT_CERTIFICATE_FILENAME: "/cert.pem/path",
+		AWS_IOT_PRIVATE_KEY_FILENAME: "/private.key/path"
 	}
 );
