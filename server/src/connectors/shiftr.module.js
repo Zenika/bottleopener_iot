@@ -14,7 +14,7 @@ exports.init = function (mainCallback) {
 	);
 
 	shiftrClient.on('connect', function () {
-		console.log('shiftrClient has connected!');
+		console.log('Connected to Shiftr.io.');
 
 		shiftrClient.subscribe(keys.SHIFTR_NAMESPACE);
 	});
