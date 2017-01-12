@@ -13,6 +13,7 @@
     "test": "mocha -w"
   },
   "dependencies": {
+    "aws-iot-device-sdk": "^1.0.14",
     "body-parser": "^1.13.3",
     "bootstrap": "^3.3.7",
     "cors": "^2.7.1",
