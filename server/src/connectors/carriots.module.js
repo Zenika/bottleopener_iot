@@ -39,6 +39,6 @@ exports.init = function (mainCallback) {
 		});
 		req.end();
 
-	}, 10000);
+	}, 5000);
 
 };
