@@ -23,13 +23,22 @@ new Vue({
 				"name": "Gwen",
 				"quantity": 0,
 				"email": "gwennael.buchet@gmail.com",
-				"platforms": []
+				"platforms": [
+					{
+						"name": "",
+						"quantity": 0
+					}
+				]
 			},
 			{
 				"name": "Adrien",
 				"quantity": 0,
 				"email": "adrien.legrand@zenika.com",
-				"platforms": []
+				"platforms": [
+					{
+						"name": "",
+						"quantity": 0
+					}]
 			}
 		]
 	},
