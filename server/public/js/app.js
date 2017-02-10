@@ -63,7 +63,7 @@ new Vue({
 		addQuantityToDrinker: function (message) {
 
 			let drinker = this._getDrinkerByName(message.name);
-			drinker.quantity = message.quantity;
+			drinker.quantity = (message.quantity > drinker.quantity) ? message.quantity : drinker.quantity;
 			drinker.platforms = message.platforms;
 			//this._setPlatformQuantityByDrinkerAndName(message.name, message.platform, message.quantity);
 		},
