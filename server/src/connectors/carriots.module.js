@@ -27,7 +27,7 @@ exports.init = function (mainCallback) {
 				let body = [];
 				body.push(chunk);
 				let msg = JSON.parse(body.toString());
-				if (undefined !== msg && undefined !== msg.result) {
+				if (undefined !== msg && undefined !== msg.result && undefined !== msg.result[0]) {
 					let data = msg.result[0].data;
 					mainCallback(data.sender, data.quantity, "Carriots");
 				}
