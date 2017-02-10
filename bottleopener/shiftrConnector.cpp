@@ -59,10 +59,6 @@ void ShiftrConnector::sendMessage(String sender, int counter)
 #ifdef __PLATFORM_SHIFTR__
   logger->log("Sending to Shiftr...");
 
-  //char buf[128];
-  //Message msg(sender, counter);
-  //Message::serialize(msg, buf, 128);
-
   String msg = "{\"sender\" : \"" + sender + "\", \"quantity\" : " + String(counter) + "}";
 
   client.publish(SHIFTR_NAMESPACE, msg);
